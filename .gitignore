@@ -1,0 +1,21 @@
+.DS_Store
+
+# IDE related
+.vscode/
+.idea/
+*.txt
+
+# Dev build
+build/
+tmp/
+
+# Test
+*.out
+
+# Environment variables
+.env
+config.yaml
+routes.json
+
+vendor/
+*.code-workspace
