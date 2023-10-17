@@ -1,0 +1,52 @@
+db:
+  type: "postgres"
+  host: "localhost"
+  port: "5432"
+  username: "postgres"
+  password: "Lunalogic123"
+  schema: "project-latihan"
+  conn:
+    max-idle: "20"
+    max-lifetime: "10m"
+    keep-alive-interval: "5m"
+    max-open: "100"
+restapi:
+  port: 6969
+  request-timeout: 1h
+  healthcheck-path: /health/info
+  info-path: /actuator/info
+  shutdown:
+    wait-duration: 1s
+    timeout-duration: 5s
+redis:
+  host: "34.101.186.82"
+  port: 6379
+  password: ""
+storage:
+  google-cloud-storage:
+    service-account-path: './credentials/service-account-artotel.json'
+    bucket-name: artotel-development
+jwt:
+  key: "3WfPT*Zned"
+  expired: 24h
+  refresh_expired: 8766h
+  key-otp: "token-otp"
+  expired-otp: 1h
+header:
+  token-param: "token"
+  refresh-token-param: "refresh-token"
+  token-otp: "token-otp"
+  reset-password-otp: "reset-password-token"
+  all-language-param: "all-language"
+pipedrive:
+  host: "https://api.pipedrive.com/v1"
+  path:
+    get-deal: "/deals/"
+    deal-field: "/dealFields"
+  header:
+    content-type: "Content-Type"
+    accept: "Accept"
+    api-token: "api_token"
+    value:
+      application-json: "application-json"
+      api-key: "90bd177312e2d7342663000ec82afb71aa6d3385"
