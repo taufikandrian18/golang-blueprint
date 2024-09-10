@@ -10,6 +10,8 @@ import (
 	"gitlab.com/wit-id/project-latihan/common/httpservice"
 	"gitlab.com/wit-id/project-latihan/toolkit/config"
 	"gitlab.com/wit-id/project-latihan/toolkit/echokit"
+
+	employeeApp "gitlab.com/wit-id/project-latihan/src/employee/application"
 )
 
 func RunEchoHTTPService(ctx context.Context, s *httpservice.Service, cfg config.KVStore) {
@@ -30,6 +32,8 @@ func RunEchoHTTPService(ctx context.Context, s *httpservice.Service, cfg config.
 	e.GET("/", func(c echo.Context) error {
 		return c.String(http.StatusOK, "ok")
 	})
+
+	employeeApp.AddRouteEmployee(s, cfg, e)
 
 	// set route config
 	httpservice.SetRouteConfig(ctx, s, cfg, e)
