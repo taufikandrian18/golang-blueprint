@@ -63,6 +63,10 @@ func handleEchoError(_ config.KVStore) echo.HTTPErrorHandler {
 			statusCode = http.StatusBadRequest
 			message = ErrEditAssesmentWhichAlreadyTaken
 
+		case errors.Is(err, httpservice.ErrUserNotMatch):
+			statusCode = http.StatusUnauthorized
+			message = ErrUserNotMatch
+
 		case errors.Is(err, httpservice.ErrUnauthorizedTokenData):
 			statusCode = http.StatusUnauthorized
 			message = ErrUnauthorizedTokenData

@@ -8,6 +8,7 @@ import (
 	"github.com/pkg/errors"
 	"gitlab.com/wit-id/project-latihan/common/httpservice"
 	"gitlab.com/wit-id/project-latihan/src/employee/service"
+	"gitlab.com/wit-id/project-latihan/src/middleware"
 	"gitlab.com/wit-id/project-latihan/src/repository/payload"
 	"gitlab.com/wit-id/project-latihan/toolkit/config"
 	"gitlab.com/wit-id/project-latihan/toolkit/log"
@@ -16,7 +17,11 @@ import (
 func AddRouteEmployee(s *httpservice.Service, cfg config.KVStore, e *echo.Echo) {
 	svc := service.NewEmployeeService(s.GetDB(), cfg)
 
+	mddw := middleware.NewEnsureToken(s.GetDB(), cfg)
+
 	employeeApp := e.Group("/employee")
+	employeeApp.Use(mddw.ValidateToken)
+	employeeApp.Use(mddw.ValidateUserLogin)
 	employeeApp.GET("/", func(c echo.Context) error {
 		return c.String(http.StatusOK, "employee app ok")
 	})
