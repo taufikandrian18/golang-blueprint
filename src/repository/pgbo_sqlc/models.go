@@ -6,7 +6,55 @@ package sqlc
 
 import (
 	"database/sql"
+	"time"
 )
+
+type AppKey struct {
+	ID   int64  `json:"id"`
+	Name string `json:"name"`
+	Key  string `json:"key"`
+}
+
+type AuthToken struct {
+	ID                  int64          `json:"id"`
+	Name                string         `json:"name"`
+	DeviceID            string         `json:"device_id"`
+	DeviceType          string         `json:"device_type"`
+	Token               string         `json:"token"`
+	TokenExpired        time.Time      `json:"token_expired"`
+	RefreshToken        string         `json:"refresh_token"`
+	RefreshTokenExpired time.Time      `json:"refresh_token_expired"`
+	IsLogin             bool           `json:"is_login"`
+	UserLogin           sql.NullString `json:"user_login"`
+	IpAddress           sql.NullString `json:"ip_address"`
+	FcmToken            sql.NullString `json:"fcm_token"`
+	CreatedAt           time.Time      `json:"created_at"`
+	UpdatedAt           sql.NullTime   `json:"updated_at"`
+}
+
+type Authentication struct {
+	Guid                 string         `json:"guid"`
+	ID                   sql.NullInt32  `json:"id"`
+	EmployeeGuid         sql.NullString `json:"employee_guid"`
+	Username             string         `json:"username"`
+	Password             string         `json:"password"`
+	ForgotPasswordToken  sql.NullString `json:"forgot_password_token"`
+	ForgotPasswordExpiry sql.NullTime   `json:"forgot_password_expiry"`
+	IsActive             bool           `json:"is_active"`
+	LastLogin            sql.NullTime   `json:"last_login"`
+	Status               string         `json:"status"`
+	CreatedAt            sql.NullTime   `json:"created_at"`
+	CreatedBy            string         `json:"created_by"`
+	UpdatedAt            sql.NullTime   `json:"updated_at"`
+	UpdatedBy            sql.NullString `json:"updated_by"`
+	Salt                 sql.NullString `json:"salt"`
+}
+
+type BlacklistedToken struct {
+	Token     sql.NullString `json:"token"`
+	Type      sql.NullString `json:"type"`
+	CreatedAt sql.NullTime   `json:"created_at"`
+}
 
 type Employee struct {
 	Guid        string         `json:"guid"`

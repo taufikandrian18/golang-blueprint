@@ -27,6 +27,7 @@ var (
 	ErrConfirmPasswordNotMatch = errors.New("confirm password not match")
 	ErrNoResultData            = errors.New("no result data")
 	ErrNoResultDataWithMessage = errors.New("no result data with message")
+	ErrUserNotMatch            = errors.New("The username or password does not match. Please check your credentials and try again")
 
 	ErrUserAlreadyRegistered = errors.New("user is already registered")
 	ErrUserNotFound          = errors.New("user not found")

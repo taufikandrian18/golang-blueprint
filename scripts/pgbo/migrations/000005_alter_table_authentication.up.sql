@@ -1,0 +1,2 @@
+ALTER TABLE authentication
+ADD COLUMN salt CHARACTER VARYING;

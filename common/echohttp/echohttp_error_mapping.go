@@ -33,6 +33,11 @@ var (
 		EN: "Invalid Token",
 	}
 
+	ErrUserNotMatch = constants.ErrorResponse{
+		ID: "The username or password does not match. Please check your credentials and try again",
+		EN: "The username or password does not match. Please check your credentials and try again",
+	}
+
 	ErrUserAlreadyCheckIn = constants.ErrorResponse{
 		ID: "user sudah check in hari ini",
 		EN: "this user is checked in already",

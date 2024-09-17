@@ -11,6 +11,8 @@ import (
 	"gitlab.com/wit-id/project-latihan/toolkit/config"
 	"gitlab.com/wit-id/project-latihan/toolkit/echokit"
 
+	tokenApp "gitlab.com/wit-id/project-latihan/src/auth_token/application"
+	authApp "gitlab.com/wit-id/project-latihan/src/authentication/application"
 	employeeApp "gitlab.com/wit-id/project-latihan/src/employee/application"
 )
 
@@ -34,6 +36,8 @@ func RunEchoHTTPService(ctx context.Context, s *httpservice.Service, cfg config.
 	})
 
 	employeeApp.AddRouteEmployee(s, cfg, e)
+	tokenApp.AddRouteAuthToken(s, cfg, e)
+	authApp.AddRouteAuthentication(s, cfg, e)
 
 	// set route config
 	httpservice.SetRouteConfig(ctx, s, cfg, e)
